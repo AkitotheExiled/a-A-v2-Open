@@ -65,7 +65,68 @@ The call above should return the tree below:
 
 const makeTree = (categories, parent) => {
   // your code here
+
+  // Create an object to return if no further children, or an object to push to if we have further children
+  let result = {};
+
+  // Grab the first person we see, is this person a child of our parent?  Yes?
+  let firstEle = categories[0];
+
+  if (categories.length === 0) {
+
+    return result;
+  }
+  for (let element of categories) {
+
+  }
+  if (firstEle === undefined) {
+    return result;
+  }
+  // Is this person's parent the parent we are looking for?
+  if (firstEle.parent === parent) {
+    // Yes => Then, continue down the tree to find further children
+    result[firstEle.id] = makeTree(categories.slice(1), firstEle.id);
+
+  } else if ((firstEle.parent !== parent)) {
+    // No - Keep going down the tree until we find one for our parent
+    let otherChildren = {};
+    //let foundChildren = makeTree(categories.slice(1), parent);
+    for (let child of categories) {
+      console.log(makeTree(child, parent));
+    }
+    //let joinedChildren = {...foundChildren, ...otherChildren};
+
+
+
+
+
+  }
+
+  result[firstEle.id] = makeTree(categories.slice(1), firstEle.id);
+  return result;
 };
+
+const categories0 = [
+  { id: 'animals', 'parent': null }
+];
+
+
+const categories1 = [
+  { id: 'animals', 'parent': null },
+  { id: 'mammals', 'parent': 'animals' },
+  { id: "cats", "parent": "mammals"},
+  { id: 'dogs', 'parent': 'mammals' },
+    { id: 'chihuahua', 'parent': 'dogs' },
+    { id: 'labrador', 'parent': 'dogs' },
+    { id: 'persian', 'parent': 'cats' },
+    { id: 'siamese', 'parent': 'cats' }
+];
+
+const tree1 = makeTree(categories1, null);
+console.log(JSON.stringify(tree1, undefined, 2));
+
+
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS LINE*****************/
 try {

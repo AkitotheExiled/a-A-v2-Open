@@ -1,0 +1,14 @@
+{
+  "name": "practice-for-week-04-reading-tests-exercise",
+  "version": "1.0.0",
+  "description": "a/a",
+  "main": "funcs.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7"
+  }
+}

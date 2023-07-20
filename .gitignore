@@ -2,3 +2,4 @@
 *.git
 aa-projects/completed-projects
 aa-projects/notes
+node_modules

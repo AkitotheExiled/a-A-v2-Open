@@ -18,7 +18,7 @@ class TTT {
     Screen.setGridlines(true);
 
     // Replace this with real commands
-    Screen.addCommand("return", "Enters the users mark :)", this.cursor.placeMark.bind(this.cursor, this.playerTurn));
+    Screen.addCommand("return", "Enters the users mark :)", this.playerMove.bind(this));
     Screen.addCommand("up", "Moves the cursor up", this.cursor.up.bind(this.cursor));
     Screen.addCommand("down", "Moves the cursor down", this.cursor.down.bind(this.cursor));
     Screen.addCommand("left", "Moves the cursor left", this.cursor.left.bind(this.cursor));
@@ -26,9 +26,34 @@ class TTT {
     Screen.render();
   }
 
-  static placeMark() {
-    
+  switchTurns() {
+    this.playerTurn = this.playerTurn === "O" ? "X" : "O";
+    Screen.setMessage(`Players turn: ${this.playerTurn}`);
   }
+
+  playerMove() {
+    let move = this.cursor.getPos();
+    let gridSpace = Screen.getGrid(...move);
+
+    if (gridSpace === " ") {
+      this.grid[move[0]][move[1]] = this.playerTurn;
+
+      Screen.setGrid(...move, this.playerTurn);
+
+      let win = TTT.checkWin(this.grid);
+      if (win !== false) {
+        TTT.endGame(win);
+      }
+      
+      this.switchTurns();
+    } else {
+      Screen.setMessage(`Grid space is not empty!`);
+    }
+
+  }
+
+
+
   static _checkFullBoard(grid) {
     const isEmpty = (space) => space === " ";
     for (let row of grid) {
@@ -64,7 +89,7 @@ class TTT {
     for (let row of grid) {
 
       let first = row[0], second = row[1], third = row[2];
-      if ((first === second && second === third) && (!this._checkIfEmpty([[first, second, third]]))) {
+      if ((first === second && second === third) && (!TTT._checkIfEmpty([[first, second, third]]))) {
         return first;
       }
     }
@@ -77,7 +102,7 @@ class TTT {
         let first = grid[row][col];
         let second = grid[row + 1][col];
         let third = grid[row + 2][col];
-        if ((first === second && second === third) && (!this._checkIfEmpty([[first, second, third]]))) {
+        if ((first === second && second === third) && (!TTT._checkIfEmpty([[first, second, third]]))) {
           return first;
         }
         break;
@@ -87,36 +112,37 @@ class TTT {
   }
 
   static _checkDiagnoals(grid) {
-    let diag1 = this._checkHorizontals([[grid[0][0], grid[1][1], grid[2][2]]]);
-    let diag2 = this._checkHorizontals([[grid[2][0], grid[1][1], grid[0][2]]]);
-    let getNonNull = this._getNonNull(diag1, diag2);
+    let diag1 = TTT._checkHorizontals([[grid[0][0], grid[1][1], grid[2][2]]]);
+    let diag2 = TTT._checkHorizontals([[grid[2][0], grid[1][1], grid[0][2]]]);
+    let getNonNull = TTT._getNonNull(diag1, diag2);
     if (getNonNull !== null) {
       return getNonNull;
     }
     return null;
   }
   static checkWin(grid) {
-    if (this._checkIfEmpty(grid)) {
+
+    if (TTT._checkIfEmpty(grid)) {
 
       return false;
     } else {
 
-      let diaWinner = this._checkDiagnoals(grid);
+      let diaWinner = TTT._checkDiagnoals(grid);
       if (diaWinner !== null) {
         return diaWinner;
       }
 
-      let horWinner = this._checkHorizontals(grid);
+      let horWinner = TTT._checkHorizontals(grid);
       if (horWinner !== null) {
         return horWinner;
       }
 
-      let verWinner = this._checkVerticals(grid);
+      let verWinner = TTT._checkVerticals(grid);
       if (verWinner !== null) {
         return verWinner;
       }
 
-      let fullBoard = this._checkFullBoard(grid);
+      let fullBoard = TTT._checkFullBoard(grid);
       if (fullBoard) {
         return "T";
       }
@@ -137,9 +163,7 @@ class TTT {
     Screen.quit();
   }
 
-    static run(tttInstance) {
 
-    }
 }
 
 

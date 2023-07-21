@@ -72,9 +72,7 @@ class Screen {
       if (!key) {
         console.log("Warning: Unknown keypress");
       } else if (!Screen.commands.hasOwnProperty(key.name)) {
-
         Screen.render();
-
         console.log(`${key.name} not supported.`);
         Screen.printCommands();
       } else {
@@ -88,19 +86,12 @@ class Screen {
     process.stdin.resume();
   }
 
-  static getGrid(row, col) {
-    if (!Screen.initialized) return;
-    return Screen.grid[row][col];
-  }
-
-  
   static setGrid(row, col, char) {
     if (!Screen.initialized) return;
-    console.log(row, col, char);
+
     if (char.length !== 1) {
       throw new Error("invalid grid character");
     }
-
     Screen.grid[row][col] = char;
   }
 

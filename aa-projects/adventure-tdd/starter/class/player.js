@@ -6,6 +6,7 @@ class Player extends Character {
 
   constructor(name, startingRoom) {
     super(name, "main character", startingRoom);
+    this.pet = null;
   }
 
   move(direction) {
@@ -69,10 +70,22 @@ class Player extends Character {
     console.log(`You ate an ${itemName}`);
   }
 
+  useItem(itemName) {
+
+    let item = this.getItemByName(itemName);
+
+    if (item.canUse()) {
+        let itemIdx = this.items.indexOf(item);
+        this.items.splice(itemIdx, 1);
+        item.use(this);
+    }
+    console.log(`You used an ${itemName}`);
+  }
+
   getItemByName(name) {
 
     for (let potItem of this.items) {
-      if (potItem.name = name) {
+      if (potItem.name === name) {
           return potItem;
       }
     }
@@ -81,16 +94,40 @@ class Player extends Character {
   }
 
   hit(name) {
-
     let enemy = this.currentRoom.getEnemyByName(name);
     enemy.applyDamage(this.strength);
- 
+
+  }
+
+  feedPet() {
+    if (this.pet === null) return;
+    let treat = this.getItemByName("Pet Treat");
+
+    this.pet.eat(treat);
   }
 
   die() {
     console.log("You are dead!");
     process.exit();
   }
+
+  applyDamage(amount) {
+
+    if (this.pet !== null) {
+      let petProtectedPlayer = this.pet.protectPlayer(amount);
+      if (!petProtectedPlayer) {
+        this.health -= amount;
+      }
+    } else {
+      if (this.health <= 0 || this.health - amount <= 0) {
+        this.die();
+      }
+      this.health -= amount;
+    }
+    console.log(`${this.name} took a hit!  ${this.health} remaining!`);
+
+  }
+
 
 }
 

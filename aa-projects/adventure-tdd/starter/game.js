@@ -41,7 +41,7 @@ function startGame() {
     // Show commands
     printHelp();
     World.startGame();
-    
+
     rl.question('\nHit RETURN to start your adventure\n', () => {
 
       console.clear();
@@ -90,6 +90,11 @@ function processCommand() {
       let itemName = cmd.split(" ")[1];
 
       player.eatItem(itemName);
+
+    }  else if (cmd.startsWith("use ")) {
+      let itemName = cmd.split(" ")[1];
+
+      player.useItem(itemName);
 
     } else if (cmd.startsWith("hit ")) {
       let enemyName = cmd.split(" ")[1];

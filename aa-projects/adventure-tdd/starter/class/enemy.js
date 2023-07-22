@@ -24,7 +24,7 @@ class Enemy extends Character {
     let rooms = this.currentRoom.getRooms();
     let randomRoom = rooms[this._random(0, rooms.length)];
     this.currentRoom = randomRoom;
-    this.cooldown = 0;
+    this.cooldown = 10000;
   }
   randomChoice() {
 
@@ -76,7 +76,7 @@ class Enemy extends Character {
 
 
   act() {
-    debugger
+
     if (this.health <= 0) {
       // Dead, do nothing;
     } else if (this.cooldown > 0) {
@@ -84,7 +84,7 @@ class Enemy extends Character {
     } else {
       let choice = this.randomChoice();
       choice();
-      
+
       this.rest();
     }
 

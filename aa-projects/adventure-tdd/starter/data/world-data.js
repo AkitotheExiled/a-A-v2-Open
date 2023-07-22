@@ -42,6 +42,13 @@ module.exports = {
       description: "A tasty looking sandwich",
       room: 2,
       isFood: true
+    },
+
+    {
+      name: "teleport",
+      description: "Teleports the user to the action!",
+      room: 1,
+      isUsable: true
     }
   ],
   enemies: [

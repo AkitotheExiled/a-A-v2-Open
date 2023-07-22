@@ -3,10 +3,15 @@ class Item {
     this.name = name;
     this.description = description;
     this.isFood = false;
+    this.isUsable = false;
   }
 
   canEat() {
     return this.isFood;
+  }
+
+  canUse() {
+    return this.isUsable;
   }
 }
 

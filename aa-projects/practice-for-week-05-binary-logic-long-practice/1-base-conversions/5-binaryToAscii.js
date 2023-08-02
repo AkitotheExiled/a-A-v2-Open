@@ -1,6 +1,6 @@
 // Translate the binary sequences in the
 // console.logs below to 8-bit ASCII strings:
-
+const ASCII = require('../utils/ascii.json');
 /******************************************************************************/
 
 // Helper function to convert a binary string into an array of 8-bit strings
@@ -22,7 +22,13 @@ const binaryStringToArray = str => {
 };
 
 const binaryToAscii = str => {
-  // Your code here
+  let ASCI = ASCII["ASCII"];
+  for (let i = 0; i < str.length; i+=8) {
+    let bytes = str.slice(i, i + 8);
+    let foundChar = ASCI.find(array => array[2] === bytes)[2];
+
+    bitString += foundChar;
+  }
 };
 
 /******************************************************************************/

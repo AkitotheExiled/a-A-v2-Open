@@ -2,8 +2,39 @@
 
 /******************************************************************************/
 
+const numberToBinary = number => {
+  let quotient;
+  let remainder;
+  let binaryStr = [];
+  while (quotient != 0) {
+    quotient = Math.floor(number / 2);
+    remainder = number % 2;
+    binaryStr.unshift(remainder);
+    number = quotient;
+  };
+
+  return "0b" + binaryStr.join("");
+};
+
+const hexToBinary = hex => {
+  const hexLibrary = {"0": "0000", "1": "0001", "2": "0010", "3": "0011", "4": "0100", "5": "0101", "6": "0110", "7": "0111",
+                      "8": "1000", "9": "1001", "a": "1010", "b": "1011", "c": "1100", "d": "1101", "e": "1110", "f": "1111"};
+
+  let arrToWorkOn = hex.split("").slice(2, hex.length);
+  let result = arrToWorkOn.map(function(ele) {
+    return hexLibrary[ele];
+  });
+
+  return "0b" + result.join("");
+}
 const convertToBase2 = element => {
-  // Your code here
+  if (typeof element === "number") {
+
+    return numberToBinary(element);
+  } else {
+
+    return hexToBinary(element);
+  }
 };
 
 /******************************************************************************/

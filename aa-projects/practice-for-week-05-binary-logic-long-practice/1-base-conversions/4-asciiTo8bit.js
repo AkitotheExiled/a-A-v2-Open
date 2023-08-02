@@ -1,5 +1,5 @@
 const addZeros = require('../utils/addZeros');
-
+const ASCII = require('../utils/ascii.json');
 // Translate the ASCII strings in the console.logs below to 8-bit binary strings
 // Implement the imported helper function addZeros()
 //    Read the export file for the explanation of how it works
@@ -7,7 +7,17 @@ const addZeros = require('../utils/addZeros');
 /******************************************************************************/
 
 const asciiTo8bit = str => {
-  // Your code here
+
+  let bitString = "";
+  let ASCI = ASCII["ASCII"];
+  for (let i = 0; i < str.length; i++) {
+
+    let foundChar = ASCI.find(array => array[3] === str[i])[3];
+
+    bitString += foundChar;
+  }
+
+  return bitString;
 };
 
 /******************************************************************************/

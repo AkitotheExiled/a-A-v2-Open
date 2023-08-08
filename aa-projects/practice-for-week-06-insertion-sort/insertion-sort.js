@@ -17,42 +17,74 @@ function insertionSort(arr) {
   - Insert the unsorted value at the break point
   Return the sorted array
   */
+
   // Copy the original array
-  let copy = [...arr];
+  debugger
+  let ogCopy = [...arr];
 
   // Create an array to store the sorted values
 
-  let sorted = [null];
+  let sorted = [];
 
   // While the array is not empty:
-  while (copy.length > 1) {
+  while (ogCopy.length > 0) {
     // - make sure you have a console.log(sorted.join(',')) as your first line in the while loop
     console.log(sorted.join(','));
     // X Pop a value from the array
-    let removedValue = copy.pop();
+    let removedValue = ogCopy.pop();
 
     // X Create a new spot at the end of the array with null to help with comparisons
     sorted.push(null);
-    let index = sorted.length - 2;
+
     // X Walk through the sorted array in reverse order
-    for (let i = sorted.length - 2; i >= 0; i--) {
-      let leftValue = sorted[i - 1];
+    let index = sorted.length - 1;
+    while (removedValue) {
+      if (sorted.length === 1) {
+        sorted[index] = removedValue;
+        removedValue = null;
+      } else {
 
-      if (leftValue > removedValue) {
-        let tmp = leftValue;
-        sorted[i] = removedValue;
+        let currentValue = sorted[index];
+        let valueToLeft = sorted[index - 1];
 
+        if (valueToLeft < removedValue || valueToLeft === undefined) {
+          sorted[index] = removedValue;
+          removedValue = null;
+
+        } else {
+          let tmp = valueToLeft;
+          sorted[index - 1] = currentValue;
+          sorted[index] = tmp;
+        }
+        index--;
       }
+
     }
+
   }
 
+  return sorted;
 }
 
-let arr = [2,4,6,8,1,3,5,7,9];
+
+// for (let i = sorted.length - 1; i > 0; i--) {
+
+    //   let currentValue = sorted[i];
+    //   let valueToLeft = sorted[i - 1];
+
+    //   if (valueToLeft < removedValue) {
+    //     sorted[i] = removedValue;
+    //     break;
+
+    //   } else {
+    //     let tmp = valueToLeft;
+    //     sorted[i - 1] = currentValue;
+    //     sorted[i] = tmp;
+    //   }
+    // }
 
 
 
-insertionSort(arr);
 // In-place Insertion Sort
 // Mutates the original array
 function insertionSortInPlace(arr) {
@@ -72,8 +104,35 @@ function insertionSortInPlace(arr) {
   Return the mutated array
   */
 
-  // Your code here
+  let divider = 1;
+  let end = arr.length - 1;
+  let index = 0;
+
+  while (divider !== end) {
+    console.log(arr.join(','));
+    let tmp = arr[divider];
+
+    while (index < divider) {
+      let nextVal = arr[index];
+
+      if (nextVal > tmp) {
+        let placeholder = arr[index];
+        arr[index] = tmp;
+        tmp = placeholder;
+
+      }
+      index++;
+    }
+    arr[divider] = tmp;
+    index = 0;
+    divider++;
+  }
+  console.log(arr.join(","));
 }
+
+let arr = [2,4,6,8,1,3,5,7,9];
+
+insertionSortInPlace(arr);
 
 
 module.exports = [insertionSort, insertionSortInPlace];

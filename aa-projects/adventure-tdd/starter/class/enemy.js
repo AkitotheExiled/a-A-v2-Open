@@ -23,6 +23,7 @@ class Enemy extends Character {
   randomMove() {
     let rooms = this.currentRoom.getRooms();
     let randomRoom = rooms[this._random(0, rooms.length)];
+    this.alert(`Goblin is moving to, ${randomRoom.name}`);
     this.currentRoom = randomRoom;
     this.cooldown = 10000;
   }

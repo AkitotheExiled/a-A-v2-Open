@@ -36,7 +36,7 @@ understanding how it works and being able to create or modify it.
     // initialize a stack with the root node
 
     // while the stack is not empty
-      // print and remove first node in stack
+      // print and remove last node in stack
 
       // if the node has a left node
         // push the left node on the back of the stack

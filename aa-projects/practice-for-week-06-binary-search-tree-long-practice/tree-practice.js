@@ -68,32 +68,46 @@ function findMaxBT (rootNode) {
 
 function getHeight (rootNode) {
   // Your code here
+  debugger
   if (!rootNode) return -1;
   if (!(rootNode.left || rootNode.right)) return 0;
-  debugger
+
   let edges = 0;
-  let queue = [rootNode];
+  let maxDepth = 0;
+  let queue = [{node: rootNode, height: edges}];
 
   while (queue.length > 0) {
 
-    let node = queue.shift();
-
-    if (node.left) {
-      queue.push(node.left);
-    }
-    if (node.right) {
-      queue.push(node.right);
+    let nodeObj = queue.pop();
+    edges = nodeObj.height;
+    if (maxDepth < edges) {
+      maxDepth = edges;
     }
 
-    if (node.left || node.right) edges++;
+    if (nodeObj.node.left) {
+      queue.push({node: nodeObj.node.left, height: edges + 1});
+    }
+    if (nodeObj.node.right) {
+      queue.push({node: nodeObj.node.right, height: edges + 1});
+    }
+
+
 
   }
-  return edges;
+  return maxDepth;
 }
 
 function balancedTree (rootNode) {
-  // Your code here
-}
+  // Every subtree is balanced, our root node is balanced
+  if (!rootNode) return 0;
+  // Check left subtree if its balanced
+  let left = balancedTree(rootNode) + balancedTree(rootNode.left);
+  // Check right subtree if its balanced
+  let right = balancedTree(rootNode) + balancedTree(rootNode.right);
+  // if all nodes/subtrees are balanced then the rootNode is balanced
+  return Math.abs(left - right) <= 1;
+  }
+
 
 function countNodes (rootNode) {
   let stack = [rootNode];
@@ -145,23 +159,18 @@ function deleteNodeBST(rootNode, target) {
   //   Make the parent point to the child
 
 }
-let bstRootBig;
+let btRootUnbalanced;
 
-bstRootBig = new TreeNode(8);
-bstRootBig.left = new TreeNode(3);
-bstRootBig.left.left = new TreeNode(2);
-bstRootBig.left.left.left = new TreeNode(1);
-bstRootBig.left.right = new TreeNode(5);
-bstRootBig.left.right.left = new TreeNode(4);
-bstRootBig.left.right.right = new TreeNode(7);
-bstRootBig.left.right.right.left = new TreeNode(6);
-bstRootBig.right = new TreeNode(10);
-bstRootBig.right.right = new TreeNode(11);
-bstRootBig.right.right.right = new TreeNode(12);
-bstRootBig.right.right.right.right = new TreeNode(15);
-bstRootBig.right.right.right.right.left = new TreeNode(14);
+btRootUnbalanced = new TreeNode(4);
+    btRootUnbalanced.right = new TreeNode(3);
+    btRootUnbalanced.right.right = new TreeNode(2);
+    btRootUnbalanced.right.right.right = new TreeNode(1);
+    btRootUnbalanced.right.right.right.right = new TreeNode(7);
+    btRootUnbalanced.right.right.right.right.right = new TreeNode(6);
+    btRootUnbalanced.right.right.right.right.right.right = new TreeNode(5);
 
-getHeight(bstRootBig.left);
+
+console.log(balancedTree(btRootUnbalanced.right.right.right.right.right));
 module.exports = {
     findMinBST,
     findMaxBST,

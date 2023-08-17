@@ -68,7 +68,6 @@ function findMaxBT (rootNode) {
 
 function getHeight (rootNode) {
   // Your code here
-  debugger
   if (!rootNode) return -1;
   if (!(rootNode.left || rootNode.right)) return 0;
 
@@ -99,12 +98,11 @@ function getHeight (rootNode) {
 
 function balancedTree (rootNode) {
   // Every subtree is balanced, our root node is balanced
-  if (!rootNode) return 0;
-  // Check left subtree if its balanced
-  let left = balancedTree(rootNode) + balancedTree(rootNode.left);
-  // Check right subtree if its balanced
-  let right = balancedTree(rootNode) + balancedTree(rootNode.right);
-  // if all nodes/subtrees are balanced then the rootNode is balanced
+
+
+  let left = getHeight(rootNode.left);
+  let right = getHeight(rootNode.right);
+
   return Math.abs(left - right) <= 1;
   }
 

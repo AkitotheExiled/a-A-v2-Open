@@ -1,0 +1,72 @@
+.photo-card {
+    background-color: #1d3e81;
+    color: #E8EFF0;
+    padding: 0.5rem 2rem 1.5rem 2rem;
+    border-radius: 2rem;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
+.photo-card a {
+    color: #E8EFF0;
+}
+.photo-card img {
+    width: 100%;
+
+
+}
+
+.photo-card p {
+    text-align: justify;
+}
+
+.photo-card .content {
+    display: block;
+    text-align: center;
+}
+
+@media print {
+    .photo-card img {
+        width: 90%;
+        height:auto;
+        page-break-after:always
+    }
+}
+@media screen and (min-width: 520px) {
+    .content img {
+        width: 100%;
+    }
+    .photo-card {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .photo-card .content {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .content img {
+        width: 75%;
+    }
+    .photo-cards {
+        display: flex;
+        flex-direction: row;
+        gap: 16px;
+    }
+    .photo-card {
+        max-width: 450px;
+    }
+    .photo-card .content {
+        flex-direction: column;
+    }
+}
+
+@media screen and (min-width: 1400px) {
+    .photo-card .content {
+        flex-direction: row;
+    }
+}

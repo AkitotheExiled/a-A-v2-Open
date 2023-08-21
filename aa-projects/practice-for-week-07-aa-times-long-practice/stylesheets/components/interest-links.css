@@ -1,0 +1,40 @@
+.interest_links {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr 1fr 2fr 2fr 1fr 0.75fr;
+    grid-template-rows: 100%;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    font-size: 12px;
+}
+
+.interests-bar__image {
+    height: 48px;
+    width: 48px;
+}
+
+.interests-bar__headline, .interests-bar__big-text {
+    font-weight: bold;
+    margin: 8px 0;
+}
+
+.interests-bar__stocks {
+    display: flex;
+    flex-direction: column;
+}
+
+.interests-bar__stocks > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 40%;
+    padding: 0 16px;
+}
+
+.interests-bar__stock-price {
+    color: #5DBA37;
+    font-weight: bold;
+}

@@ -1,0 +1,108 @@
+.topnav {
+    height: 41px;
+    background-color: rgb(255, 255, 100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+
+}
+
+.topnav svg {
+    height: 17px;
+}
+
+.topnav .topnav__links {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 12px;
+}
+
+.topnav .topnav__links a:nth-child(2) {
+    margin-left: 16px;
+}
+.topnav form:first-child {
+    height: 29px;
+    display: flex;
+    align-items: center;
+    width: 220px;
+}
+
+.topnav form:first-child input::placeholder {
+    font-weight: bold;
+}
+
+.topnav form input:focus::placeholder {
+    color: #9A9A9A;
+}
+
+.topnav form:first-child > div {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+    cursor: pointer;
+}
+.topnav form:first-child > div svg {
+    width: 19px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.input-control {
+    background-color: rgb(255, 255, 255);
+    height: 100%;
+
+    padding: 0 2px 0 8px;
+}
+
+nav {
+    background-color: rgb(18, 18, 18);
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+nav span {
+    text-transform: uppercase;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+nav a {
+    color: white;
+
+}
+
+nav ul li {
+    padding: 0 36px;
+    border-right: 1px solid white;
+}
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav ul li div svg {
+    fill: white;
+    width: 16px;
+    height: 16px;
+}
+
+nav > ul li:nth-child(6) {
+    border: none;
+    padding: 0;
+}
+
+nav ul li > div ul  {
+    padding-left: 16px;
+}
+nav ul li > div ul li {
+    border: none;
+    padding: 0 8px;
+}

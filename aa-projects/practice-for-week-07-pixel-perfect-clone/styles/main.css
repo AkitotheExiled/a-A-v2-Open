@@ -188,7 +188,7 @@ section h2 {
 }
 
 
-.topCharts {
+.topCharts, .community {
     flex-direction: column;
 }
 
@@ -196,46 +196,48 @@ section h2 {
     position: relative;
     cursor: pointer;
 }
-.topCharts table {
+section table {
     border-collapse: collapse;
     font-size: 24px;
 
 }
 
-.topCharts table svg {
+section table svg {
     width: 20px;
     height: 20px;
 }
 
 
 
-.topCharts table span {
+section table span {
     font-size: 12px;
     text-transform: uppercase;
     color: rgb(154, 154, 154);
 }
 
-.topCharts table .hot span {
+section table .hot span {
     color: rgb(255, 20, 100);
 }
-.topCharts table img {
+section table img {
     width: 64px;
     height: 64px;
 }
 
 
 
-.topCharts table td {
+section table td {
     padding: 8px 0;
-    border-bottom: 1px solid rgb(233, 233, 233);
     cursor: pointer;
+}
+section table tr {
+    border-bottom: 1px solid rgb(195, 195, 195);
 }
 
 .topCharts table td:last-child span {
     color: black;
 }
 
-.topCharts table tr:hover {
+table tr:hover {
     background-color: rgb(233, 233, 233);
 }
 
@@ -404,12 +406,13 @@ section h2 {
     z-index: -1;
     max-height: fit-content;
 }
+
 .videos {
     justify-content: center;
     background-color: black;
     width: 100%;
     cursor: pointer;
-
+    margin-bottom: 25%;
 }
 
 .videos header {
@@ -489,7 +492,7 @@ section h2 {
     gap: 16px 32px;
 }
 
-.latest > header, .community > header {
+.latest > header {
     flex: 0 0 100%;
     text-align: center;
 }
@@ -511,6 +514,265 @@ section h2 {
 .latest .article img {
     width: 225px;
     height: 125px;
+}
+
+.community header > div {
+    text-align: center;
+    margin: 0 auto 32px auto;
+}
+
+.community header > div:nth-child(2) {
+    width: 55ch;
+    margin: 0 auto 32px auto;
+}
+
+.community div > button {
+    margin-right: 24px;
+}
+
+table thead th {
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align:left;
+    border-bottom: 1px solid rgb(212, 212, 212);
+}
+
+table thead th:nth-child(1) {
+    width:10%;
+}
+table thead th:nth-child(2) {
+    width:79%;
+}
+
+.community table td img {
+    border-radius: 32px;
+    display:inline-block;
+}
+.community table td:nth-child(2) {
+    display: flex;
+    gap: 16px;
+}
+.community table td:nth-child(2) > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.community table td:nth-child(2) svg {
+    height: 10px;
+    width: 10px;
+    stroke: black;
+    stroke-width: 1px;
+    fill: rgb(255, 255, 100);
+}
+
+.community > div {
+    margin: 0 auto;
+}
+
+body > footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px;
+    gap: 60px;
+}
+
+body > footer > header {
+    display: flex;
+    gap: 32px;
+}
+
+body > footer > header > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+body > footer > header > div:first-child {
+    width: 55ch;
+}
+
+body > footer, body > footer > div {
+    background-color: rgb(18, 18, 18);
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+body > footer > footer > div ul li  {
+    display: inline-block;
+    margin-right: 12px;
+    cursor: pointer;
+}
+
+body > footer > header > div li {
+    margin-top: 16px;
+    margin-bottom: 16px;
+
+}
+
+body > footer > header > div span {
+    font-size: 12px;
+    color: rgb(154, 154, 154);
+}
+
+body > footer h2 {
+    font-size: 36px;
+    font-weight: 100;
+}
+body > footer ul li div svg {
+    height: 19px;
+    width: 20px;
+}
+
+.footer__header__svginline ul {
+    display: flex;
+    gap: 24px;
+}
+
+.only-mobile {
+    display: none;
+}
+
+@media screen and (min-width: 300px) and (max-width:900px) {
+    nav, .topnav form:first-child {
+        display: none;
+    }
+    .topnav, .topnav__links a{
+        padding: 8px;
+        font-size: 10px;
+    }
+    .topnav__links a:nth-child(2) {
+        display: none;
+    }
+    .mobile {
+        display: flex;
+        gap: 16px;
+    }
+    .topnav {
+        width: 100%;
+        max-width: 100vw;
+    }
+    .topnav a {
+        height: 16px;
+
+    }
+    .mobile button {
+        background-color: #fbff66;
+        height: 16px;
+        width: 16px;
+    }
+    .only-mobile {
+        display: block;
+    }
+    .mobile-hamburger svg, .mobile-search svg, .topnav a svg {
+
+        height: 100%;
+        width: 100%;
+    }
+    main {
+        display: flex;
+        flex-direction: column;
+        padding: 0 0 0 0;
+        gap: 16px;
+        padding: 32px;
+    }
+    .main__article {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        max-height: min-content;
+    }
+
+    main > section {
+        flex-direction: column;
+        gap: 48px;
+    }
+
+    main > section .article {
+        border: none;
+        padding: 0;
+    }
+
+    main > section .type__spacing {
+        border-bottom: 2px solid black;
+    }
+
+    main > section .article__left {
+        gap: 0;
+    }
+
+    section h2 {
+        font-size: 48px;
+    }
+
+    .topCharts > header {
+        flex-direction: column;
+    }
+
+    .topCharts__filterContainer {
+        width: 278px;
+        height: 55px;
+    }
+
+    table td{
+        font-size: 12px;
+
+    }
+    section table {
+        border-collapse: separate;
+        border-spacing: 4px;
+    }
+    section table tr {
+        border: none;
+    }
+
+    .topCharts section table td:nth-child(3), section table td:nth-child(4) {
+        display: table-row;
+    }
+    .videos {
+        margin-bottom: 10%;
+    }
+    .videos > div{
+        gap: 4px;
+    }
+    .videos > div > section {
+        flex-direction: column;
+    }
+
+    section .article {
+        min-height: fit-content;
+    }
+
+    .latest .article {
+        width: fit-content;
+    }
+
+    .latest .article img {
+        width: 100%;
+    }
+
+    .community > header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .community div button {
+        margin-top: 16px;
+    }
+
+    .community header > div:nth-child(2) {
+        width: 30ch;
+    }
+    body > footer {
+        padding: 45px;
+    }
+    body > footer > header > div:first-child {
+        width: 30ch;
+    }
+
+    body > footer > header {
+        flex-direction: column;
+    }
 }
 @keyframes widen--asmidge {
     from {

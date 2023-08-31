@@ -88,7 +88,7 @@ nav ul {
     align-items: center;
 }
 
-nav ul li div svg {
+ul li div svg {
     fill: white;
     width: 16px;
     height: 16px;

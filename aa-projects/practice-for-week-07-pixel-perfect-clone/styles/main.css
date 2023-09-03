@@ -662,7 +662,7 @@ body > footer ul li div svg {
         width: 16px;
     }
     .only-mobile {
-        display: block;
+        display: flex;
     }
     .mobile-hamburger svg, .mobile-search svg, .topnav a svg {
 
